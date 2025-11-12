@@ -30,6 +30,7 @@
 *.exe
 *.out
 *.app
+PasswordTest
 
 # Coverage data
 *.gcda

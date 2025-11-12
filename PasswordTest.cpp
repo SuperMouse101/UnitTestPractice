@@ -61,3 +61,58 @@ TEST(PasswordTest, newline_with_letters_password) {
 	int actual = my_password.count_leading_characters("SS\n");
 	ASSERT_EQ(2, actual);
 }
+
+// New Tests
+TEST(PasswordTest, all_lower) {
+	Password my_password;
+	bool test = my_password.has_mixed_case("aaa");
+	ASSERT_EQ(false, test);
+}
+
+TEST(PasswordTest, all_upper) {
+	Password my_password;
+	bool test = my_password.has_mixed_case("AAA");
+	ASSERT_EQ(false, test);
+}
+
+TEST(PasswordTest, mixed_upperlower) {
+	Password my_password;
+	bool test = my_password.has_mixed_case("aAa");
+	ASSERT_EQ(true, test);
+}
+
+TEST(PasswordTest, mixed_upperlower2) {
+	Password my_password;
+	bool test = my_password.has_mixed_case("AaA");
+	ASSERT_EQ(true, test);
+}
+
+TEST(PasswordTest, mixed_upperlower3) {
+	Password my_password;
+	bool test = my_password.has_mixed_case("AbadlfALKFoagladfASOJ");
+	ASSERT_EQ(true, test);
+}
+
+TEST(PasswordTest, newline) {
+	Password my_password;
+	bool test = my_password.has_mixed_case("\n");
+	ASSERT_EQ(false, test);
+}
+
+TEST(PasswordTest, space) {
+	Password my_password;
+	bool test = my_password.has_mixed_case(" ");
+	ASSERT_EQ(false, test);
+}
+
+TEST(PasswordTest, mixed_upperlower_withSpace) {
+	Password my_password;
+	bool test = my_password.has_mixed_case("A adfs AfASF SDF f");
+	ASSERT_EQ(true, test);
+}
+
+TEST(PasswordTest, all_C) {
+	Password my_password;
+	bool test = my_password.has_mixed_case("CCCCcccccCCCCCccccc");
+	ASSERT_EQ(true, test);
+}
