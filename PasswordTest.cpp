@@ -116,3 +116,27 @@ TEST(PasswordTest, all_C) {
 	bool test = my_password.has_mixed_case("CCCCcccccCCCCCccccc");
 	ASSERT_EQ(true, test);
 }
+
+TEST(PasswordTest, num) {
+	Password my_password;
+	bool test = my_password.has_mixed_case("379327592739572395");
+	ASSERT_EQ(false, test);
+}
+
+TEST(PasswordTest, numLetLower) {
+	Password my_password;
+	bool test = my_password.has_mixed_case("379327592739572395adfjadpf");
+	ASSERT_EQ(false, test);
+}
+
+TEST(PasswordTest, numLetUpper) {
+	Password my_password;
+	bool test = my_password.has_mixed_case("379327592739572395AGJAJFADJF");
+	ASSERT_EQ(false, test);
+}
+
+TEST(PasswordTest, numLetter) {
+	Password my_password;
+	bool test = my_password.has_mixed_case("379327592739572395adfjapladjfAJPDFJSPO");
+	ASSERT_EQ(true, test);
+}

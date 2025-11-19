@@ -35,3 +35,4 @@ PasswordTest
 # Coverage data
 *.gcda
 *.gcno
+*.gcov
